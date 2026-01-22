@@ -11,7 +11,7 @@ echo "Setting up storage access..."
 termux-setup-storage || true
 
 # Change to home directory
-cd "$HOME" || cd
+cd "$HOME" || { echo 'Failed to change to home directory'; exit 1; }
 
 # Configure any unpacked but not yet configured packages
 echo "Configuring unpacked packages..."
@@ -27,7 +27,7 @@ pkg upgrade -y
 
 # Programming Languages
 echo "Installing programming languages..."
-pkg install -y python python2 python2-dev python3 ruby perl php golang
+pkg install -y python3 python2 python2-dev ruby perl php golang
 
 # Python package managers
 echo "Installing Python package managers..."
@@ -80,7 +80,7 @@ pkg install -y wcalc bmon cmatrix
 
 # Final system update
 echo "Performing final system update..."
-apt update && apt upgrade -y
+pkg update -y && pkg upgrade -y
 
 echo ""
 echo "=========================================="
