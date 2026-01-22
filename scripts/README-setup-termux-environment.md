@@ -20,7 +20,7 @@ chmod +x scripts/setup-termux-environment.sh
 ## What Gets Installed
 
 ### Programming Languages
-- Python 3, Python 2 (with dev tools)
+- Python 3, Python 2 (with dev tools) **Note: Python 2 is deprecated and may be removed in future Termux releases**
 - Ruby
 - Perl
 - PHP
@@ -65,6 +65,7 @@ chmod +x scripts/setup-termux-environment.sh
 ### Other Utilities
 - wcalc (calculator)
 - bmon (bandwidth monitor)
+- cmatrix (terminal matrix effect)
 
 ### Python/Ruby Packages
 - requests (Python package via pip2)
@@ -73,7 +74,7 @@ chmod +x scripts/setup-termux-environment.sh
 ## Features
 
 - **Automatic Updates**: Updates package lists and upgrades existing packages before installation
-- **Storage Setup**: Optionally sets up storage access (prompts user)
+- **Storage Setup**: Attempts to set up storage access (may require user interaction if not already configured)
 - **Error Handling**: Gracefully handles errors without stopping the entire installation
 - **Progress Messages**: Shows clear status messages for each installation step
 - **Final Summary**: Displays a comprehensive summary of installed packages
