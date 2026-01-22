@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playwright browser_wait_for Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .loading {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #dynamic-content {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Playwright browser_wait_for Test Page</h1>
+        
+        <div class="status info">
+            <strong>Initial State:</strong> Page loaded
+        </div>
+
+        <h2>Test Scenarios</h2>
+        
+        <div>
+            <button onclick="showDelayedMessage()">Scenario 1: Show message after 2s</button>
+            <button onclick="hideMessage()">Scenario 2: Hide message</button>
+            <button onclick="updateMessage()">Scenario 3: Update message after 3s</button>
+        </div>
+
+        <div id="dynamic-content"></div>
+    </div>
+
+    <script>
+        // Scenario 1: Content appears after delay
+        function showDelayedMessage() {
+            const content = document.getElementById('dynamic-content');
+            content.innerHTML = '<div class="status loading">Loading content...</div>';
+            
+            setTimeout(() => {
+                content.innerHTML = '<div class="status success" id="success-message">Content loaded successfully!</div>';
+            }, 2000);
+        }
+
+        // Scenario 2: Content disappears
+        function hideMessage() {
+            const content = document.getElementById('dynamic-content');
+            content.innerHTML = '<div class="status info" id="temp-message">This message will disappear in 2 seconds...</div>';
+            
+            setTimeout(() => {
+                content.innerHTML = '';
+            }, 2000);
+        }
+
+        // Scenario 3: Content updates after delay
+        function updateMessage() {
+            const content = document.getElementById('dynamic-content');
+            content.innerHTML = '<div class="status loading" id="updating-message">Updating...</div>';
+            
+            setTimeout(() => {
+                const msg = document.getElementById('updating-message');
+                if (msg) {
+                    msg.className = 'status success';
+                    msg.textContent = 'Update completed!';
+                }
+            }, 3000);
+        }
+
+        // Auto-start first scenario on page load
+        setTimeout(() => {
+            const content = document.getElementById('dynamic-content');
+            content.innerHTML = '<div class="status success" id="auto-loaded">This content appeared automatically after 3 seconds</div>';
+        }, 3000);
+    </script>
+</body>
+</html>
