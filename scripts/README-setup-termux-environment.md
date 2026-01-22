@@ -65,7 +65,6 @@ chmod +x scripts/setup-termux-environment.sh
 ### Other Utilities
 - wcalc (calculator)
 - bmon (bandwidth monitor)
-- cmatrix (terminal matrix effect)
 
 ### Python/Ruby Packages
 - requests (Python package via pip2)
