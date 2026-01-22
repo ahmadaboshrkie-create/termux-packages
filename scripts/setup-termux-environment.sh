@@ -2,7 +2,7 @@
 # Comprehensive Termux Environment Setup Script
 # This script installs common packages for a general Termux user environment
 
-set -e -u
+set -e -u -o pipefail
 
 echo "Starting comprehensive Termux environment setup..."
 
@@ -77,10 +77,6 @@ pkg install -y wcalc bmon cmatrix
 # or may be deprecated. They are commented out to avoid errors:
 # - wgetrc (this is a configuration file, not a package)
 # - chroot (may not be available as standalone package)
-
-# Final system update
-echo "Performing final system update..."
-pkg update -y && pkg upgrade -y
 
 echo ""
 echo "=========================================="
